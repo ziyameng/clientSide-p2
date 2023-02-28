@@ -1,0 +1,155 @@
+/* Styling for the menu bar */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+}
+
+.menu div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-button {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background-color: #ddd;
+}
+
+/* Styling for page structure */
+.maker-page-content {
+  display: flex;
+}
+
+.emoji-maker {
+  flex: 3;
+}
+
+.outcome {
+  flex: 1;
+}
+
+.menu,
+.maker-page-content {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Styling for emoji maker */
+.emoji-maker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.emoji-maker-component {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.emoji-maker-component:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.emoji-maker-component:active {
+  transform: scale(0.95);
+}
+
+.emoji-maker-component img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.emoji-maker-component img:hover {
+  transform: scale(1.1);
+  border-color: #666;
+  cursor: pointer;
+}
+
+.emoji-maker-component .image {
+  display: flex;
+}
+
+.emoji-maker-component .image img {
+  margin-right: 10px;
+}
+
+.outcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Styling the form*/
+.outcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  width: 400px;
+  padding: 10px;
+}
+
+.outcome-display {
+  width: 100%;
+  height: 200px;
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.post-form label {
+  width: 100%;
+  text-align: left;
+}
+
+.post-form input[type="text"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.post-form input[type="submit"] {
+  width: 100%;
+}
+
+/*face display*/
+.outcome-display {
+  position: relative;
+  text-align: center;
+}
+
+.outcome-display img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
