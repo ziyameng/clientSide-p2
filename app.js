@@ -1,3 +1,4 @@
+/***** Maker page: create emoji combination ******/
 // Get the face images
 const faceImages = document.querySelectorAll(".face-option");
 
@@ -37,7 +38,6 @@ faceImages.forEach((face) => {
     if (selectedHair) {
       outcomeDisplay.innerHTML += `<img src="${selectedHair.src}" alt="Selected Hair">`;
     }
-
     // Update the selected face variable
     selectedFace = face;
   });
@@ -125,4 +125,59 @@ hairImages.forEach((hair) => {
   });
 });
 
-//////////////////////////Navigation menu bar////////////////////////////////
+/******* Navigation menu bar ********/
+// Get all the links in the menu
+const links = document.querySelectorAll(".menu li a");
+
+// Loop through the links and add a click event listener
+links.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    // Prevent the default link behavior
+    event.preventDefault();
+
+    // Get the section ID from the href attribute
+    const sectionId = link.getAttribute("href");
+
+    // Deactivate all sections
+    document.querySelectorAll("section").forEach((section) => {
+      section.classList.remove("active");
+    });
+
+    // Activate the selected section
+    document.querySelector(sectionId).classList.add("active");
+
+    // Update the active link in the menu
+    document.querySelectorAll(".menu li a").forEach((link) => {
+      link.classList.remove("active");
+    });
+    link.classList.add("active");
+  });
+});
+
+/****** Post on browser page*******/
+const postForm = document.querySelector(".post-form");
+const displayOutcome = document.querySelector(".outcome-display");
+const postsContainer = document.querySelector(".posts-container");
+
+postForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const emojitarId = postForm.querySelector(".emojitar-id").value;
+  const description = postForm.querySelector(".description").value;
+  const username = postForm.querySelector(".username").value;
+
+  const post = document.createElement("div");
+  post.classList.add("post");
+  post.innerHTML = `
+    <div class="post-header">
+      <h3>EmojitarId: ${emojitarId}</h3>
+      <p>Description: ${description}</p>
+      <span>Posted by ${username}</span>
+    </div>
+    <div class="post-body">
+      ${displayOutcome.innerHTML}
+    </div>
+  `;
+
+  postsContainer.appendChild(post);
+});

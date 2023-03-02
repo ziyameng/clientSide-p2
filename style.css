@@ -3,35 +3,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f2f2f2;
   padding: 10px 20px;
+  list-style-type: none;
+  background-color: #333;
 }
 
-.menu div {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.menu-button {
+.menu li a {
   display: block;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
-.menu-button:hover {
-  background-color: #ddd;
+.menu li a:hover {
+  background-color: #111;
 }
 
-/* Styling for page structure */
-.maker-page-content {
+/* Section page display */
+section {
+  display: none;
+  padding: 50px;
+}
+
+section.active {
+  display: block;
+}
+
+/* Styling for maker-page structure */
+.maker-page {
   display: flex;
+  border: 2px solid black;
+  padding: 20px;
 }
 
 .emoji-maker {
@@ -42,13 +46,7 @@
   flex: 1;
 }
 
-.menu,
-.maker-page-content {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-/* Styling for emoji maker */
+/* Maker-page: styling for emoji maker */
 .emoji-maker {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -75,8 +73,8 @@
 
 .emoji-maker-component img {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   margin: 5px;
   border: 1px solid #ccc;
   border-radius: 50%;
@@ -97,25 +95,21 @@
   margin-right: 10px;
 }
 
-.outcome {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /*Styling the form*/
 .outcome {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border: 2px solid black;
   width: 400px;
   padding: 10px;
+  margin-right: 20px;
 }
 
 .outcome-display {
   width: 100%;
-  height: 200px;
+  height: 300px;
   border: 2px solid black;
   margin-bottom: 10px;
 }
@@ -141,7 +135,7 @@
   width: 100%;
 }
 
-/*face display*/
+/*****Face display*********/
 .outcome-display {
   position: relative;
   text-align: center;
@@ -152,4 +146,37 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/*****Styling the browser post*********/
+.post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-body {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+.post-body img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }

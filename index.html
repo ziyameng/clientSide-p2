@@ -7,210 +7,206 @@
   </head>
 
   <body>
-    <div class="menu">
-      <div>
-        <button class="maker-page-content menu-button">Maker</button>
-      </div>
-      <div>
-        <button class="browser-page-content menu-button">Browser</button>
-      </div>
-      <div>
-        <button class="component-page-content menu-button">Component</button>
-      </div>
-    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="#maker-page">Maker</a></li>
+        <li><a href="#browser-page">Browser</a></li>
+        <li><a href="#component-page">Component</a></li>
+      </ul>
+    </nav>
 
-    <div class="maker-page-content content-section" id="maker-page-content">
-      <!-- post form -->
-      <div class="outcome">
-        <div class="outcome-display"></div>
-        <form class="post-form">
-          <label for="emojitar-id">emojitar id</label>
-          <input type="text" class="emojitar-id" /><br />
-          <label for="description">description</label>
-          <input type="text" class="description" /><br />
-          <label for="username">username</label>
-          <input type="text" class="username" /><br />
-          <input type="submit" value="post" />
-        </form>
-      </div>
+    <main>
+      <!-- Maker page content here -->
+      <section id="maker-page">
+        <div class="maker-page">
+          <!-- post form -->
+          <div class="outcome">
+            <div class="outcome-display"></div>
+            <form class="post-form">
+              <label for="emojitar-id">emojitar id</label>
+              <input type="text" class="emojitar-id" /><br />
+              <label for="description">description</label>
+              <input type="text" class="description" /><br />
+              <label for="username">username</label>
+              <input type="text" class="username" /><br />
+              <input type="submit" value="post" />
+            </form>
+          </div>
 
-      <div class="emoji-maker">
-        <!-- face -->
-        <div class="emoji-maker-component" id="face-component">
-          <h3 class="component-title">Faces</h3>
-          <div class="image">
-            <img
-              class="face-option"
-              src="resources/face-grey.png"
-              alt="Face Options"
-              width="20"
-              height="20"
-            />
-            <img
-              class="face-option"
-              src="resources/face-pink-rosy.png"
-              alt="Face Options"
-              width="20"
-              height="20"
-            />
+          <div class="emoji-maker">
+            <!-- face -->
+            <div class="emoji-maker-component">
+              <h3 class="component-title">Faces</h3>
+              <div class="image">
+                <img
+                  class="face-option"
+                  src="resources/face-grey.png"
+                  alt="Face Options"
+                  width="20"
+                  height="20"
+                />
+                <img
+                  class="face-option"
+                  src="resources/face-pink-rosy.png"
+                  alt="Face Options"
+                  width="20"
+                  height="20"
+                />
 
-            <img
-              class="face-option"
-              src="resources/face-yellow.png"
-              alt="Face Options"
-              width="20"
-              height="20"
-            />
+                <img
+                  class="face-option"
+                  src="resources/face-yellow.png"
+                  alt="Face Options"
+                  width="20"
+                  height="20"
+                />
+              </div>
+            </div>
+
+            <!-- eyes -->
+            <div class="emoji-maker-component">
+              <h3 class="component-title">Eyes</h3>
+              <div class="image">
+                <img
+                  src="resources/eyes-pale-blue.png"
+                  alt="Eyes Options"
+                  width="20"
+                  height="20"
+                  class="eye-option"
+                />
+
+                <img
+                  src="resources/eyes-smiley-pale-blue.png"
+                  alt="Eyes Options"
+                  width="20"
+                  height="20"
+                  class="eye-option"
+                />
+
+                <img
+                  src="resources/eyes-smiley.png"
+                  alt="Eyes Options"
+                  width="20"
+                  height="20"
+                  class="eye-option"
+                />
+
+                <img
+                  src="resources/eyes.png"
+                  alt="Eyes Options"
+                  width="20"
+                  height="20"
+                  class="eye-option"
+                />
+              </div>
+            </div>
+
+            <!-- Mouth -->
+            <div class="emoji-maker-component">
+              <h3 class="component-title">Mouth</h3>
+              <div class="image">
+                <img
+                  src="resources/mouth-grin-pink.png"
+                  alt="Mouth Options"
+                  width="20"
+                  height="20"
+                  class="mouth-option"
+                />
+
+                <img
+                  src="resources/mouth-grin.png"
+                  alt="Mouth Options"
+                  width="20"
+                  height="20"
+                  class="mouth-option"
+                />
+
+                <img
+                  src="resources/mouth-smile.png"
+                  alt="Mouth Options"
+                  width="20"
+                  height="20"
+                  class="mouth-option"
+                />
+              </div>
+            </div>
+
+            <!-- Hair -->
+            <div class="emoji-maker-component">
+              <h3 class="component-title">Hair</h3>
+              <div class="image">
+                <img
+                  src="resources/hair-bob-brown.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+
+                <img
+                  src="resources/hair-bowl-brown.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                  v
+                />
+
+                <img
+                  src="resources/hair-curly-brown.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+
+                <img
+                  src="resources/hair-curly-ginger.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+
+                <img
+                  src="resources/hair-pigtails-brown.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+
+                <img
+                  src="resources/hair-short-brown.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+
+                <img
+                  src="resources/hair-short-teal.png"
+                  alt="Hair Options"
+                  width="20"
+                  height="20"
+                  class="hair-option"
+                />
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- eyes -->
-        <div class="emoji-maker-component">
-          <h3 class="component-title">Eyes</h3>
-          <div class="image">
-            <img
-              src="resources/eyes-pale-blue.png"
-              alt="Eyes Options"
-              width="20"
-              height="20"
-              class="eye-option"
-            />
+      <!-- Browser page content here -->
+      <section id="browser-page" class="browser-section">
+        <div class="posts-container"></div>
+      </section>
 
-            <img
-              src="resources/eyes-smiley-pale-blue.png"
-              alt="Eyes Options"
-              width="20"
-              height="20"
-              class="eye-option"
-            />
-
-            <img
-              src="resources/eyes-smiley.png"
-              alt="Eyes Options"
-              width="20"
-              height="20"
-              class="eye-option"
-            />
-
-            <img
-              src="resources/eyes.png"
-              alt="Eyes Options"
-              width="20"
-              height="20"
-              class="eye-option"
-            />
-          </div>
-        </div>
-
-        <!-- Mouth -->
-        <div class="emoji-maker-component">
-          <h3 class="component-title">Mouth</h3>
-          <div class="image">
-            <img
-              src="resources/mouth-grin-pink.png"
-              alt="Mouth Options"
-              width="20"
-              height="20"
-              class="mouth-option"
-            />
-
-            <img
-              src="resources/mouth-grin.png"
-              alt="Mouth Options"
-              width="20"
-              height="20"
-              class="mouth-option"
-            />
-
-            <img
-              src="resources/mouth-smile.png"
-              alt="Mouth Options"
-              width="20"
-              height="20"
-              class="mouth-option"
-            />
-          </div>
-        </div>
-
-        <!-- Hair -->
-        <div class="emoji-maker-component">
-          <h3 class="component-title">Hair</h3>
-          <div class="image">
-            <img
-              src="resources/hair-bob-brown.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-
-            <img
-              src="resources/hair-bowl-brown.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-              v
-            />
-
-            <img
-              src="resources/hair-curly-brown.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-
-            <img
-              src="resources/hair-curly-ginger.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-
-            <img
-              src="resources/hair-pigtails-brown.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-
-            <img
-              src="resources/hair-short-brown.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-
-            <img
-              src="resources/hair-short-teal.png"
-              alt="Hair Options"
-              width="20"
-              height="20"
-              class="hair-option"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Browser page content here -->
-    <div
-      class="browser-page-content content-section"
-      id="browser-page-content"
-      style="display: none"
-    ></div>
-
-    <!-- Component page content here -->
-    <div
-      class="component-page-content content-section"
-      id="component-page-content"
-      style="display: none"
-    ></div>
-
+      <!-- Component page content here -->
+      <section id="component-page" class="component-section">
+        <div class="component-container"></div>
+      </section>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
