@@ -183,6 +183,20 @@ postForm.addEventListener("submit", (event) => {
 
   postsContainer.appendChild(post);
 
+  /****** Comments Section *******/
+  const postEmojiInfo = document.querySelector(".post-emoji-info");
+
+  postEmojiInfo.innerHTML = `
+  <div class="post-header">
+  <h3>EmojitarId: ${emojitarId}</h3>
+  <p>Description: ${description}</p>
+  <span>Posted by ${username}</span>
+  </div>
+  <div class="post-body">
+  ${displayOutcome.innerHTML}
+  </div>
+  `;
+
   // Get the "View Comments" button
   const viewCommentsBtn = document.querySelector(".view-comment-btn a");
 
@@ -202,5 +216,24 @@ postForm.addEventListener("submit", (event) => {
 
     // Display the comments section
     commentsSection.style.display = "block";
+
+    //Add event listener to hide comments section when clicking on other sections
+    document.querySelectorAll(".menu-btn").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        if (event.target.getAttribute("href") == "#comments-section") {
+          commentsSection.style.display = "block";
+          browserPageSection.style.display = "none";
+        } else if (event.target.getAttribute("href") == "#browser-page") {
+          commentsSection.style.display = "none";
+          browserPageSection.style.display = "block";
+        } else if (event.target.getAttribute("href") == "#maker-page") {
+          commentsSection.style.display = "none";
+          browserPageSection.style.display = "none";
+        } else if (event.target.getAttribute("href") == "#component-page") {
+          commentsSection.style.display = "none";
+          browserPageSection.style.display = "none";
+        }
+      });
+    });
   });
 });

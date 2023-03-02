@@ -206,10 +206,26 @@
 
       <section id="comments-section" class="comments-section">
         <div class="comments-container">
-          <div class="post-info"></div>
-          <div class="comments"></div>
-          <form class="comment-form">
-            <!-- comment form inputs -->
+          <div class="post-emoji-info">
+            <!-- display post emoji info here -->
+          </div>
+          <div class="comments-display">
+            <!-- display comments here -->
+          </div>
+          <form class="comment-submit-form">
+            <label for="rating">Rating:</label>
+            <select name="rating" id="rating">
+              <option value="1">1 Star</option>
+              <option value="2">2 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="5">5 Stars</option>
+            </select>
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" rows="5"></textarea>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" />
+            <button type="submit">Submit Comment</button>
           </form>
         </div>
       </section>

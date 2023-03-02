@@ -182,6 +182,27 @@ section.active {
 }
 
 /*comment*/
+
 .comments-section {
   display: none;
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-emoji-info {
+  flex: 30%;
+}
+
+.comments-display {
+  flex: 40%;
+}
+
+.comment-submit-form {
+  flex: 30%;
+  display: flex;
+  flex-direction: column;
 }
