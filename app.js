@@ -126,17 +126,17 @@ hairImages.forEach((hair) => {
 });
 
 /******* Navigation menu bar ********/
-// Get all the links in the menu
-const links = document.querySelectorAll(".menu li a");
+// Get all the buttons in the menu
+const buttons = document.querySelectorAll(".menu-btn");
 
-// Loop through the links and add a click event listener
-links.forEach((link) => {
-  link.addEventListener("click", (event) => {
+// Loop through the buttons and add a click event listener
+buttons.forEach((button) => {
+  button.addEventListener("click", (event) => {
     // Prevent the default link behavior
     event.preventDefault();
 
-    // Get the section ID from the href attribute
-    const sectionId = link.getAttribute("href");
+    // Get the section ID from the href attribute of the link inside the button
+    const sectionId = button.querySelector("a").getAttribute("href");
 
     // Deactivate all sections
     document.querySelectorAll("section").forEach((section) => {
@@ -146,11 +146,11 @@ links.forEach((link) => {
     // Activate the selected section
     document.querySelector(sectionId).classList.add("active");
 
-    // Update the active link in the menu
-    document.querySelectorAll(".menu li a").forEach((link) => {
-      link.classList.remove("active");
+    // Update the active button in the menu
+    document.querySelectorAll(".menu-btn").forEach((button) => {
+      button.classList.remove("active");
     });
-    link.classList.add("active");
+    button.classList.add("active");
   });
 });
 
@@ -177,7 +177,30 @@ postForm.addEventListener("submit", (event) => {
     <div class="post-body">
       ${displayOutcome.innerHTML}
     </div>
+    <button class="view-comment-btn"><a href="#comments-section">View Comments</a></button>
+
   `;
 
   postsContainer.appendChild(post);
+
+  // Get the "View Comments" button
+  const viewCommentsBtn = document.querySelector(".view-comment-btn a");
+
+  // Get the comments section
+  const commentsSection = document.getElementById("comments-section");
+
+  // Hide the comments section initially
+  commentsSection.style.display = "none";
+
+  // Add click event listener to the "View Comments" button
+  viewCommentsBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    // Hide the "Browser page" section
+    const browserPageSection = document.getElementById("browser-page");
+    browserPageSection.style.display = "none";
+
+    // Display the comments section
+    commentsSection.style.display = "block";
+  });
 });

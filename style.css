@@ -8,7 +8,7 @@
   background-color: #333;
 }
 
-.menu li a {
+.menu button a {
   display: block;
   color: white;
   font-size: 20px;
@@ -17,7 +17,7 @@
   text-decoration: none;
 }
 
-.menu li a:hover {
+.menu button a:hover {
   background-color: #111;
 }
 
@@ -179,4 +179,9 @@ section.active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+}
+
+/*comment*/
+.comments-section {
+  display: none;
 }

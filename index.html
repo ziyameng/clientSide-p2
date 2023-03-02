@@ -8,11 +8,13 @@
 
   <body>
     <nav>
-      <ul class="menu">
-        <li><a href="#maker-page">Maker</a></li>
-        <li><a href="#browser-page">Browser</a></li>
-        <li><a href="#component-page">Component</a></li>
-      </ul>
+      <div class="menu">
+        <button class="menu-btn"><a href="#maker-page">Maker</a></button>
+        <button class="menu-btn"><a href="#browser-page">Browser</a></button>
+        <button class="menu-btn">
+          <a href="#component-page">Component</a>
+        </button>
+      </div>
     </nav>
 
     <main>
@@ -200,6 +202,16 @@
       <!-- Browser page content here -->
       <section id="browser-page" class="browser-section">
         <div class="posts-container"></div>
+      </section>
+
+      <section id="comments-section" class="comments-section">
+        <div class="comments-container">
+          <div class="post-info"></div>
+          <div class="comments"></div>
+          <form class="comment-form">
+            <!-- comment form inputs -->
+          </form>
+        </div>
       </section>
 
       <!-- Component page content here -->
