@@ -1,0 +1,15 @@
+{
+  "name": "p2-emojitar",
+  "version": "1.0.0",
+  "description": "A client-server emojitar builder",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ebrahim Baydoun & Ziya Meng",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1"
+  }
+}
