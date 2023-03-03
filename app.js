@@ -154,59 +154,41 @@ buttons.forEach((button) => {
   });
 });
 
-/****** Post on browser page*******/
+// Select the elements we need to work with
 const postForm = document.querySelector(".post-form");
 const displayOutcome = document.querySelector(".outcome-display");
 const postsContainer = document.querySelector(".posts-container");
+const form = document.querySelector(".comment-submit-form");
+const ratingInput = document.getElementById("rating");
+const commentInput = document.getElementById("comment");
+const usernameInput = document.getElementById("username");
+const commentsDisplay = document.querySelector(".comments-display");
+const postEmojiInfo = document.querySelector(".post-emoji-info");
 
-postForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const emojitarId = postForm.querySelector(".emojitar-id").value;
-  const description = postForm.querySelector(".description").value;
-  const username = postForm.querySelector(".username").value;
-
+// Define a function to create a new post
+function createPost(emojitarId, description, username) {
+  // Create the post element
   const post = document.createElement("div");
   post.classList.add("post");
+
+  // Add the post content
   post.innerHTML = `
-    <div class="post-header">
-      <h3>EmojitarId: ${emojitarId}</h3>
-      <p>Description: ${description}</p>
-      <span>Posted by ${username}</span>
-    </div>
-    <div class="post-body">
-      ${displayOutcome.innerHTML}
-    </div>
-    <button class="view-comment-btn"><a href="#comments-section">View Comments</a></button>
+     <div class="post-header">
+       <h3>EmojitarId: ${emojitarId}</h3>
+       <p>Description: ${description}</p>
+       <span>Posted by ${username}</span>
+     </div>
+     <div class="post-body">
+       ${displayOutcome.innerHTML}
+     </div>
+     <button class="view-comment-btn"><a href="#comments-section">View Comments</a></button>
+   `;
 
-  `;
-
+  // Add the post to the posts container
   postsContainer.appendChild(post);
 
-  /****** Comments Section *******/
-  const postEmojiInfo = document.querySelector(".post-emoji-info");
-
-  postEmojiInfo.innerHTML = `
-  <div class="post-header">
-  <h3>EmojitarId: ${emojitarId}</h3>
-  <p>Description: ${description}</p>
-  <span>Posted by ${username}</span>
-  </div>
-  <div class="post-body">
-  ${displayOutcome.innerHTML}
-  </div>
-  `;
-
-  // Get the "View Comments" button
-  const viewCommentsBtn = document.querySelector(".view-comment-btn a");
-
-  // Get the comments section
-  const commentsSection = document.getElementById("comments-section");
-
-  // Hide the comments section initially
-  commentsSection.style.display = "none";
-
-  // Add click event listener to the "View Comments" button
+  // Add a click event listener to the "View Comments" button
+  const viewCommentsBtn = post.querySelector(".view-comment-btn a");
   viewCommentsBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -214,10 +196,22 @@ postForm.addEventListener("submit", (event) => {
     const browserPageSection = document.getElementById("browser-page");
     browserPageSection.style.display = "none";
 
-    // Display the comments section
+    // Display the comments section and postEmojiInfo
+    const commentsSection = document.getElementById("comments-section");
     commentsSection.style.display = "block";
 
-    //Add event listener to hide comments section when clicking on other sections
+    postEmojiInfo.innerHTML = `
+    <div class="post-header">
+    <h3>EmojitarId: ${emojitarId}</h3>
+    <p>Description: ${description}</p>
+    <span>Posted by ${username}</span>
+    </div>
+    <div class="post-body">
+    ${displayOutcome.innerHTML}
+    </div>
+    `;
+
+    // Add event listener to hide comments section when clicking on other sections
     document.querySelectorAll(".menu-btn").forEach((btn) => {
       btn.addEventListener("click", (event) => {
         if (event.target.getAttribute("href") == "#comments-section") {
@@ -236,4 +230,43 @@ postForm.addEventListener("submit", (event) => {
       });
     });
   });
+}
+
+// Add a submit event listener to the post form
+postForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Get the values from the form
+  const emojitarId = postForm.querySelector(".emojitar-id").value;
+  const description = postForm.querySelector(".description").value;
+  const username = postForm.querySelector(".username").value;
+
+  // Create a new post
+  createPost(emojitarId, description, username);
+});
+
+// Add a submit event listener to the comment form
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Get the values from the form
+  const rating = ratingInput.value;
+  const comment = commentInput.value;
+  const username = usernameInput.value;
+
+  // Create the comment HTML
+  const commentHtml = `
+      <div class="comment">
+        <p><strong>${username}</strong> rated it ${rating} stars</p>
+        <p>${comment}</p>
+      </div>
+    `;
+
+  // Append the comment HTML to the comments display
+  commentsDisplay.insertAdjacentHTML("beforeend", commentHtml);
+
+  // Reset the form inputs
+  ratingInput.value = "1";
+  commentInput.value = "";
+  usernameInput.value = "";
 });
