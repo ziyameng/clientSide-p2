@@ -125,35 +125,6 @@ hairImages.forEach((hair) => {
   });
 });
 
-/******* Navigation menu bar ********/
-// Get all the buttons in the menu
-const buttons = document.querySelectorAll(".menu-btn");
-
-// Loop through the buttons and add a click event listener
-buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    // Prevent the default link behavior
-    event.preventDefault();
-
-    // Get the section ID from the href attribute of the link inside the button
-    const sectionId = button.querySelector("a").getAttribute("href");
-
-    // Deactivate all sections
-    document.querySelectorAll("section").forEach((section) => {
-      section.classList.remove("active");
-    });
-
-    // Activate the selected section
-    document.querySelector(sectionId).classList.add("active");
-
-    // Update the active button in the menu
-    document.querySelectorAll(".menu-btn").forEach((button) => {
-      button.classList.remove("active");
-    });
-    button.classList.add("active");
-  });
-});
-
 // Select the elements we need to work with
 const postForm = document.querySelector(".post-form");
 const displayOutcome = document.querySelector(".outcome-display");
@@ -165,108 +136,30 @@ const usernameInput = document.getElementById("username");
 const commentsDisplay = document.querySelector(".comments-display");
 const postEmojiInfo = document.querySelector(".post-emoji-info");
 
-// Define a function to create a new post
-function createPost(emojitarId, description, username) {
-  // Create the post element
-  const post = document.createElement("div");
-  post.classList.add("post");
-
-  // Add the post content
-  post.innerHTML = `
-     <div class="post-header">
-       <h3>EmojitarId: ${emojitarId}</h3>
-       <p>Description: ${description}</p>
-       <span>Posted by ${username}</span>
-     </div>
-     <div class="post-body">
-       ${displayOutcome.innerHTML}
-     </div>
-     <button class="view-comment-btn"><a href="#comments-section">View Comments</a></button>
-   `;
-
-  // Add the post to the posts container
-  postsContainer.appendChild(post);
-
-  // Add a click event listener to the "View Comments" button
-  const viewCommentsBtn = post.querySelector(".view-comment-btn a");
-  viewCommentsBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    // Hide the "Browser page" section
-    const browserPageSection = document.getElementById("browser-page");
-    browserPageSection.style.display = "none";
-
-    // Display the comments section and postEmojiInfo
-    const commentsSection = document.getElementById("comments-section");
-    commentsSection.style.display = "block";
-
-    postEmojiInfo.innerHTML = `
-    <div class="post-header">
-    <h3>EmojitarId: ${emojitarId}</h3>
-    <p>Description: ${description}</p>
-    <span>Posted by ${username}</span>
-    </div>
-    <div class="post-body">
-    ${displayOutcome.innerHTML}
-    </div>
-    `;
-
-    // Add event listener to hide comments section when clicking on other sections
-    document.querySelectorAll(".menu-btn").forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        if (event.target.getAttribute("href") == "#comments-section") {
-          commentsSection.style.display = "block";
-          browserPageSection.style.display = "none";
-        } else if (event.target.getAttribute("href") == "#browser-page") {
-          commentsSection.style.display = "none";
-          browserPageSection.style.display = "block";
-        } else if (event.target.getAttribute("href") == "#maker-page") {
-          commentsSection.style.display = "none";
-          browserPageSection.style.display = "none";
-        } else if (event.target.getAttribute("href") == "#component-page") {
-          commentsSection.style.display = "none";
-          browserPageSection.style.display = "none";
-        }
-      });
-    });
-  });
-}
-
 // Add a submit event listener to the post form
-postForm.addEventListener("submit", (event) => {
+postForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  // Get the values from the form
-  const emojitarId = postForm.querySelector(".emojitar-id").value;
   const description = postForm.querySelector(".description").value;
-  const username = postForm.querySelector(".username").value;
+  const eyes =
+    selectedEyes?.src.replace(window.location.origin + "/", "") ?? null;
+  const mouth =
+    selectedMouth?.src.replace(window.location.origin + "/", "") ?? null;
+  const hair =
+    selectedHair?.src.replace(window.location.origin + "/", "") ?? null;
+  const face =
+    selectedFace?.src.replace(window.location.origin + "/", "") ?? null;
+  const username = localStorage.getItem("username");
 
-  // Create a new post
-  createPost(emojitarId, description, username);
-});
+  const res = await fetch("/api/create-emoji", {
+    method: "POST",
+    body: JSON.stringify({ description, eyes, mouth, hair, face, username }),
+    headers: {
+      "Content-type": "application/json; chartset=UTF-8",
+    },
+  });
 
-// Add a submit event listener to the comment form
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  // Get the values from the form
-  const rating = ratingInput.value;
-  const comment = commentInput.value;
-  const username = usernameInput.value;
-
-  // Create the comment HTML
-  const commentHtml = `
-      <div class="comment">
-        <p><strong>${username}</strong> rated it ${rating} stars</p>
-        <p>${comment}</p>
-      </div>
-    `;
-
-  // Append the comment HTML to the comments display
-  commentsDisplay.insertAdjacentHTML("beforeend", commentHtml);
-
-  // Reset the form inputs
-  ratingInput.value = "1";
-  commentInput.value = "";
-  usernameInput.value = "";
+  if (!res.ok) {
+    alert("Failed to create emoji");
+  }
 });

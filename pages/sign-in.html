@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emoji Maker</title>
+    <link rel="stylesheet" href="/resources/index.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="menu">
+        <div>
+          <a href="/">Maker</a>
+          <a href="/browser">Browser</a>
+          <a href="/component">Component</a>
+        </div>
+        <div id="sign-in-section"></div>
+      </div>
+    </nav>
+
+    <main>
+      <h1>Sign In</h1>
+      <form id="sign-in">
+        <label>Username: <input name="username" value="" required /></label>
+        <label
+          >Password:
+          <input
+            type="password"
+            name="password"
+            value=""
+            required
+            minlength="6"
+        /></label>
+        <button type="submit">Sign In</button>
+      </form>
+      <h1>Sign Up</h1>
+      <form id="sign-up">
+        <label>Username: <input name="username" value="" required /></label>
+        <label
+          >Password:
+          <input
+            type="password"
+            name="password"
+            value=""
+            required
+            minlength="6"
+        /></label>
+        <button type="submit">Sign Up</button>
+      </form>
+    </main>
+    <script src="resources/sign-in.js"></script>
+  </body>
+</html>

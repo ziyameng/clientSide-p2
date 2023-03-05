@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Maker - Browser</title>
+    <link rel="stylesheet" href="/resources/index.css" />
+  </head>
+  <style>
+    .browser-emojies {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 20px;
+    }
+
+    .browser-emoji-images {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      border: 1px solid black;
+    }
+    .browser-emoji-images img {
+      position: absolute;
+    }
+  </style>
+  <body>
+    <nav>
+      <div class="menu">
+        <div>
+          <a href="/">Maker</a>
+          <a href="/browser">Browser</a>
+          <a href="/component">Component</a>
+        </div>
+        <div id="sign-in-section"></div>
+      </div>
+    </nav>
+
+    <section id="browser-emojies" class="browser-emojies"></section>
+
+    <script src="resources/browser.js"></script>
+    <script src="resources/sign-in.js"></script>
+  </body>
+</html>
