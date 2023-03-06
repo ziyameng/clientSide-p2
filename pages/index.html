@@ -4,6 +4,60 @@
     <meta charset="UTF-8" />
     <title>Emoji Maker</title>
     <link rel="stylesheet" href="/resources/index.css" />
+
+    <style>
+      .maker-grid {
+        margin: 20px;
+        gap: 20px;
+        display: grid;
+        grid-template-columns: 400px auto;
+      }
+
+      .browser-grid {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 20px;
+        margin: 20px;
+      }
+
+      .canvas-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border: 1px solid black;
+      }
+      .canvas {
+        margin: 5px;
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+        position: relative;
+      }
+      .canvas img {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+      }
+
+      /* Applied in the javascript */
+      .emojie-part-container {
+        display: flex;
+        gap: 20px;
+      }
+      .emojie-part {
+        display: flex;
+        cursor: pointer;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        transition: background-color 80ms ease-in-out;
+      }
+      .emojie-part:hover {
+        background-color: aliceblue;
+      }
+    </style>
   </head>
 
   <body>
@@ -11,242 +65,28 @@
       <div class="menu">
         <div>
           <a href="/">Maker</a>
-          <a href="/browser">Browser</a>
-          <a href="/component">Component</a>
         </div>
         <div id="sign-in-section"></div>
       </div>
     </nav>
 
     <main>
-      <section id="maker-page">
-        <div class="maker-page">
-          <!-- post form -->
-          <div class="outcome">
-            <div class="outcome-display"></div>
-            <form class="post-form">
-              <label for="description">description</label>
-              <input type="text" class="description" /><br />
-              <button>Create Emoji Character</button>
+      <section class="maker-grid">
+        <div class="canvas-container">
+          <div id="canvas" class="canvas"></div>
+          <div>
+            <!-- submit handled in JavaScript -->
+            <form id="create-emojie">
+              <label>Description <input name="description" /></label>
+              <button>Create emojie</button>
             </form>
           </div>
-
-          <div class="emoji-maker">
-            <!-- face -->
-            <div class="emoji-maker-component">
-              <h3 class="component-title">Faces</h3>
-              <div class="image">
-                <div class="component-item">
-                  <img
-                    class="face-option"
-                    src="resources/face-grey.png"
-                    alt="Face Options"
-                    width="20"
-                    height="20"
-                  />
-                  <p>Grey face</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    class="face-option"
-                    src="resources/face-pink-rosy.png"
-                    alt="Face Options"
-                    width="20"
-                    height="20"
-                  />
-                  <p>Pink rosy face</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    class="face-option"
-                    src="resources/face-yellow.png"
-                    alt="Face Options"
-                    width="20"
-                    height="20"
-                  />
-                  <p>Yellow face</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- eyes -->
-            <div class="emoji-maker-component">
-              <h3 class="component-title">Eyes</h3>
-              <div class="image">
-                <div class="component-item">
-                  <img
-                    src="resources/eyes-pale-blue.png"
-                    alt="Eyes Options"
-                    width="20"
-                    height="20"
-                    class="eye-option"
-                  />
-                  <p>Pale blue eyes</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/eyes-smiley-pale-blue.png"
-                    alt="Eyes Options"
-                    width="20"
-                    height="20"
-                    class="eye-option"
-                  />
-                  <p>Happy pale blue eyes</p>
-                </div>
-                <div class="component-item">
-                  <img
-                    src="resources/eyes-smiley.png"
-                    alt="Eyes Options"
-                    width="20"
-                    height="20"
-                    class="eye-option"
-                  />
-                  <p>Happy eyes</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/eyes.png"
-                    alt="Eyes Options"
-                    width="20"
-                    height="20"
-                    class="eye-option"
-                  />
-                  <p>Normal eyes</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mouth -->
-            <div class="emoji-maker-component">
-              <h3 class="component-title">Mouth</h3>
-              <div class="image">
-                <div class="component-item">
-                  <img
-                    src="resources/mouth-grin-pink.png"
-                    alt="Mouth Options"
-                    width="20"
-                    height="20"
-                    class="mouth-option"
-                  />
-                  <p>Grinning pink mouth</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/mouth-grin.png"
-                    alt="Mouth Options"
-                    width="20"
-                    height="20"
-                    class="mouth-option"
-                  />
-                  <p>Grinning mouth</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/mouth-smile.png"
-                    alt="Mouth Options"
-                    width="20"
-                    height="20"
-                    class="mouth-option"
-                  />
-                  <p>Smiling mouth</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hair -->
-            <div class="emoji-maker-component">
-              <h3 class="component-title">Hair</h3>
-              <div class="image">
-                <div class="component-item">
-                  <img
-                    src="resources/hair-bob-brown.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Bob brown hair</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/hair-bowl-brown.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Bowl brown hair</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/hair-curly-brown.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Curly brown hair</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/hair-curly-ginger.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Curly ginger hair</p>
-                </div>
-                <div class="component-item">
-                  <img
-                    src="resources/hair-pigtails-brown.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Pigtails brown hair</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/hair-short-brown.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Short brown hair</p>
-                </div>
-
-                <div class="component-item">
-                  <img
-                    src="resources/hair-short-teal.png"
-                    alt="Hair Options"
-                    width="20"
-                    height="20"
-                    class="hair-option"
-                  />
-                  <p>Short teal hair</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+        <div class="emojie-parts" id="emojie-parts">Parts</div>
       </section>
+      <section id="browser" class="browser-grid"></section>
     </main>
-    <script src="resources/index.js"></script>
-
-    <!-- Manages sign-in/sign-out logic -->
-    <script src="resources/sign-in.js"></script>
+    <script type="module" src="resources/scripts/index.js"></script>
+    <script src="resources/scripts/sign-in.js"></script>
   </body>
 </html>

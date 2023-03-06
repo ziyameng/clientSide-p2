@@ -1,7 +1,7 @@
 const signInForm = document.getElementById("sign-in");
 const signUpForm = document.getElementById("sign-up");
 
-async function handleSign(endpoint) {
+async function handleSign(event, endpoint) {
   const formData = new FormData(event.target);
   const username = formData.get("username");
   const password = formData.get("password");
@@ -36,7 +36,7 @@ let errorEl = null;
 signInForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const resp = await handleSign("/api/sign-in");
+  const resp = await handleSign(event, "/api/sign-in");
 
   if (resp) {
     if (errorEl) errorEl.remove();
@@ -53,7 +53,7 @@ signInForm?.addEventListener("submit", async (event) => {
 signUpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const resp = await handleSign("/api/sign-up");
+  const resp = await handleSign(event, "/api/sign-up");
 
   if (resp) {
     if (errorEl) errorEl.remove();

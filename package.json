@@ -4,7 +4,7 @@
   "description": "A client-server emojitar builder",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server/server.js"
   },
   "author": "Ebrahim Baydoun & Ziya Meng",
   "dependencies": {

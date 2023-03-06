@@ -1,0 +1,33 @@
+{
+  "eye": [
+    { "src": "/resources/eyes/eyes-pale-blue.png", "desc": "Eyes pale blue" },
+    {
+      "src": "/resources/eyes/eyes-smiley-pale-blue.png",
+      "desc": "Smiley pale blue"
+    },
+    { "src": "/resources/eyes/eyes-smiley.png", "desc": "Smiley eyes" },
+    { "src": "/resources/eyes/eyes.png", "desc": "Normal eyes" }
+  ],
+  "face": [
+    { "src": "/resources/faces/face-grey.png", "desc": "Face grey" },
+    { "src": "/resources/faces/face-pink-rosy.png", "desc": "Pink rosy" },
+    { "src": "/resources/faces/face-yellow.png", "desc": "Yellow" }
+  ],
+  "hair": [
+    { "src": "/resources/hair/hair-bob-brown.png", "desc": "Bob brown" },
+    { "src": "/resources/hair/hair-bowl-brown.png", "desc": "Bowl brown" },
+    { "src": "/resources/hair/hair-curly-brown.png", "desc": "Curly brown" },
+    { "src": "/resources/hair/hair-curly-ginger.png", "desc": "Curly ginger" },
+    {
+      "src": "/resources/hair/hair-pigtails-brown.png",
+      "desc": "Pigtails brown"
+    },
+    { "src": "/resources/hair/hair-short-brown.png", "desc": "Short brown" },
+    { "src": "/resources/hair/hair-short-teal.png", "desc": "Short teal" }
+  ],
+  "mouth": [
+    { "src": "/resources/mouth/mouth-grin-pink.png", "desc": "Grin pink" },
+    { "src": "/resources/mouth/mouth-grin.png", "desc": "Grin" },
+    { "src": "/resources/mouth/mouth-smile.png", "desc": "Smile" }
+  ]
+}
