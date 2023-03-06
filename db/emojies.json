@@ -52,5 +52,14 @@
     "username": "anonymous",
     "time": "Mon Mar 06 2023",
     "id": "2028d531-a117-4a91-9339-fcfb491137a0"
+  },
+  {
+    "face": "/resources/faces/face-yellow.png",
+    "mouth": "/resources/mouth/mouth-smile.png",
+    "eye": "/resources/eyes/eyes-smiley.png",
+    "hair": null,
+    "username": "anonymous",
+    "time": "Mon Mar 06 2023",
+    "id": "890aa2d2-e43f-449f-ab4b-e68cf2bafbdc"
   }
 ]

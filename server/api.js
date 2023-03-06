@@ -14,6 +14,19 @@ app.get("/api/emojies", (_, res) => {
   res.send(emojies);
 });
 
+app.get("/api/emojie/:id", (req, res) => {
+  const filename = path.join(__dirname, "../db/emojies.json");
+  const emojies = JSON.parse(fs.readFileSync(filename));
+
+  const emojie = emojies.find((e) => e.id === req.params.id);
+
+  if (emojie) {
+    res.send(emojie);
+  } else {
+    res.send({});
+  }
+});
+
 app.post("/api/create-emoji", (req, res) => {
   // https://stackoverflow.com/a/67624847
   const id = crypto.randomUUID();

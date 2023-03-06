@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emoji Maker</title>
+    <link rel="stylesheet" href="/resources/index.css" />
+
+    <style>
+      #emoji-section {
+        margin: 20px;
+      }
+      form {
+        margin: 20px;
+        gap: 20px;
+        display: flex;
+        align-items: baseline;
+      }
+
+      #emoji-comments {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .comment-container {
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+
+      .comment-name {
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="menu">
+        <div>
+          <a href="/">Maker</a>
+        </div>
+        <div id="sign-in-section"></div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="emoji-section"></section>
+      <form id="post-comment">
+        <label for="comment-input">Comment</label>
+        <textarea
+          id="comment-input"
+          name="comment"
+          cols="60"
+          rows="2"
+        ></textarea>
+        <button>post</button>
+      </form>
+      <section id="emoji-comments"></section>
+
+      <script type="module" src="resources/scripts/emojie.js"></script>
+      <script src="resources/scripts/sign-in.js"></script>
+    </main>
+  </body>
+</html>
