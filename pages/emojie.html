@@ -16,6 +16,10 @@
         align-items: baseline;
       }
 
+      #interaction-section {
+        margin: 20px;
+      }
+
       #emoji-comments {
         margin: 20px;
         display: flex;
@@ -30,6 +34,9 @@
       }
 
       .comment-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         font-size: 0.75rem;
         font-weight: bold;
       }
@@ -48,16 +55,8 @@
 
     <main>
       <section id="emoji-section"></section>
-      <form id="post-comment">
-        <label for="comment-input">Comment</label>
-        <textarea
-          id="comment-input"
-          name="comment"
-          cols="60"
-          rows="2"
-        ></textarea>
-        <button>post</button>
-      </form>
+      <div id="interaction-section"></div>
+
       <section id="emoji-comments"></section>
 
       <script type="module" src="resources/scripts/emojie.js"></script>

@@ -7,9 +7,24 @@ app.get("/api/emojie-parts", (_, res) => {
   res.send(JSON.parse(fs.readFileSync(filename)));
 });
 
-app.get("/api/emojies", (_, res) => {
+app.put("/api/emojies", (req, res) => {
+  const { userSearch, dateSearch } = req.body;
+
   const filename = path.join(__dirname, "../db/emojies.json");
-  const emojies = JSON.parse(fs.readFileSync(filename));
+  let emojies = JSON.parse(fs.readFileSync(filename));
+
+  if (userSearch) {
+    emojies = emojies.filter((e) => e.username.includes(userSearch));
+  }
+
+  if (dateSearch) {
+    emojies = emojies.filter((e) => {
+      const date = new Date(e.time);
+      const filterDate = new Date(dateSearch);
+
+      return date >= filterDate;
+    });
+  }
 
   res.send(emojies);
 });

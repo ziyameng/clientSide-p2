@@ -14,7 +14,6 @@ async function handleSign(event, endpoint) {
         "Content-type": "application/json; chartset=UTF-8",
       },
     });
-
     if (res.ok) {
       localStorage.setItem("username", username);
       localStorage.setItem("password", password);

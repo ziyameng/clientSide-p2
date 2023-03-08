@@ -6,6 +6,7 @@ const app = require("./app");
 require("./sign-up");
 require("./api");
 require("./comments");
+require("./secured");
 
 const port = 3000;
 app.listen(port, () => {

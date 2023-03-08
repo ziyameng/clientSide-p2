@@ -17,7 +17,7 @@ app.post("/api/sign-in", (req, res) => {
   const user = users.find((storedUser) => storedUser.username === username);
 
   if (user && user.password === password) {
-    req.res.sendStatus(200);
+    res.send({ auth: Buffer.from(`${username}:${password}`, "base64") });
   } else {
     res.status(401);
     res.send({ reason: "Failed to sign in. Does user exist?" });
@@ -50,5 +50,5 @@ app.post("/api/sign-up", (req, res) => {
   users.push({ username, password });
 
   fs.writeFileSync(fileName, JSON.stringify(users, null, 2));
-  res.sendStatus(200);
+  res.send({ auth: Buffer.from(`${username}:${password}`, "base64") });
 });

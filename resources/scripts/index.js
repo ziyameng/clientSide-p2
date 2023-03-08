@@ -93,7 +93,26 @@ async function loadEmojiePart() {
 await loadEmojiePart();
 
 async function fetchAndDrawCreatedEmojies() {
-  const res = await fetch("/api/emojies");
+  const params = new URLSearchParams(window.location.search);
+
+  const userSearch = params.get("user-search");
+  const dateSearch = params.get("date-search");
+
+  const userSearchEl = document.getElementById("user-search");
+  userSearchEl.value = userSearch;
+  const dateSearchEl = document.getElementById("date-search");
+  dateSearchEl.value = dateSearch;
+
+  const res = await fetch("/api/emojies", {
+    method: "PUT",
+    body: JSON.stringify({
+      userSearch: userSearch || null,
+      dateSearch: dateSearch ?? null,
+    }),
+    headers: {
+      "Content-type": "application/json; chartset=UTF-8",
+    },
+  });
   const emojies = await res.json();
 
   const container = document.getElementById("browser");
@@ -121,7 +140,7 @@ form.onsubmit = async (event) => {
       body: JSON.stringify({
         ...emojieFace,
         desc: description,
-        username: "anonymous", // TODO: handle with auth
+        username: localStorage.getItem("username") ?? "anonymous",
       }),
       headers: {
         "Content-type": "application/json; chartset=UTF-8",
