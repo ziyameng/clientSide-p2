@@ -1,4 +1,5 @@
 const path = require("path");
+const crypto = require("crypto");
 const fs = require("fs");
 const securedRoutes = require("express").Router();
 const app = require("./app");
@@ -56,4 +57,45 @@ securedRoutes.delete("/api/emojies/:id", (req, res) => {
   res.sendStatus(200);
 });
 
+securedRoutes.post("/api/emojie-part", async (req, res) => {
+  const filename = path.join(__dirname, "../db/emojie-parts.json");
+  const parts = JSON.parse(fs.readFileSync(filename));
+
+  const { type, description, username, time, dataUrl } = req.body;
+
+  const bytes = dataURLtoUint(dataUrl);
+
+  const folder = {
+    eye: "/resources/eyes",
+    face: "/resources/faces",
+    hair: "/resources/hair",
+    mouth: "/resources/mouth",
+  }[type];
+
+  const emojiPngFileName = crypto.randomUUID() + ".png";
+
+  const pathToSave = path.join(__dirname, "../", folder, emojiPngFileName);
+
+  fs.writeFileSync(pathToSave, bytes);
+  const resourceUrl = path.join(folder, emojiPngFileName);
+
+  parts[type].push({ src: resourceUrl, desc: description, username, time });
+  fs.writeFileSync(filename, JSON.stringify(parts));
+
+  res.sendStatus(200);
+});
+
 app.use("/", securedRoutes);
+
+// https://stackoverflow.com/a/30407840
+function dataURLtoUint(dataurl) {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return u8arr;
+}

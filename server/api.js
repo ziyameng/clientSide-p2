@@ -46,14 +46,14 @@ app.post("/api/create-emoji", (req, res) => {
   // https://stackoverflow.com/a/67624847
   const id = crypto.randomUUID();
 
-  const { face, mouth, eye, hair, description, username } = req.body;
+  const { face, mouth, eye, hair, desc, username } = req.body;
 
   const emojiToSave = {
     face,
     mouth,
     eye,
     hair,
-    description,
+    desc,
     username: username ?? "anonymous",
     time: new Date().toDateString(),
     id,

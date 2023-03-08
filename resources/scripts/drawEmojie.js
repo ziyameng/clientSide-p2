@@ -32,6 +32,12 @@ export function drawEmojie(container, emoji, noClick) {
   const name = document.createElement("p");
   name.innerText = "created by " + emoji.username + " on " + emoji.time;
   div.appendChild(name);
+  console.log(emoji);
+  if (emoji.desc) {
+    const desc = document.createElement("p");
+    desc.innerText = emoji.desc;
+    div.appendChild(desc);
+  }
 
   container.appendChild(div);
 }

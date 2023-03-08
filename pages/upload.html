@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emoji Maker</title>
+    <link rel="stylesheet" href="/resources/index.css" />
+
+    <style>
+      main {
+        margin: 20px;
+      }
+      .preview {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+      }
+      form {
+        margin: 20px 0px;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="menu">
+        <div>
+          <a href="/">Maker</a>
+          <a href="/upload">Upload</a>
+        </div>
+        <div id="sign-in-section"></div>
+      </div>
+    </nav>
+
+    <main>
+      <div id="preview-stats"></div>
+
+      <form id="upload-form">
+        <label>
+          Upload emojie part:
+          <input
+            type="file"
+            id="file-upload"
+            name="file"
+            required
+            accept="image/png"
+          />
+        </label>
+        <label> Description <input name="description" required /></label>
+        <label
+          >Type
+          <select name="type" required>
+            <option value="face">Face</option>
+            <option value="eye">Eye</option>
+            <option value="mouth">Mouth</option>
+            <option value="hair">Hair</option>
+          </select>
+        </label>
+        <div>
+          <button id="btn-submit" disabled>Upload</button>
+        </div>
+      </form>
+    </main>
+    <script src="resources/scripts/upload.js" type="module"></script>
+    <script src="resources/scripts/sign-in.js"></script>
+  </body>
+</html>
