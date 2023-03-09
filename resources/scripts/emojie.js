@@ -16,7 +16,7 @@ async function fetchEmojie() {
   const interactionSection = document.getElementById("interaction-section");
   if (content.username === localStorage.getItem("username")) {
     interactionSection.innerHTML = `
-      <button id="delete-emoji">Delete</button>
+      <button class="delete-emoji" id="delete-emoji">Delete</button>
     `;
   } else {
     interactionSection.innerHTML = `

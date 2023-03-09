@@ -37,10 +37,12 @@
     <main>
       <div id="preview-stats"></div>
 
-      <form id="upload-form">
-        <label>
+      <form class="upload-form" id="upload-form">
+        <label class="upload-form-label">
           Upload emojie part:
-          <input
+        <label class="upload-form-label">
+          <input 
+          class="upload-form-input"
             type="file"
             id="file-upload"
             name="file"
@@ -48,10 +50,10 @@
             accept="image/png"
           />
         </label>
-        <label> Description <input name="description" required /></label>
-        <label
-          >Type
-          <select name="type" required>
+        <label class="upload-form-label"> Description: <input class="upload-form-input" name="description" required /></label>
+        <label class="upload-form-label"
+          >Type:
+          <select class="upload-form-selectlist" name="type" required>
             <option value="face">Face</option>
             <option value="eye">Eye</option>
             <option value="mouth">Mouth</option>
@@ -59,7 +61,7 @@
           </select>
         </label>
         <div>
-          <button id="btn-submit" disabled>Upload</button>
+          <button class="upload-form-btn-submit" id="btn-submit" disabled>Upload</button>
         </div>
       </form>
     </main>

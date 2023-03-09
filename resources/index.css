@@ -38,7 +38,21 @@ body {
   background-color: #111;
 }
 
-/**/
+#sign-in-section {
+  display: flex;
+  color: white;
+  align-items: center;
+  gap: 8px;
+}
+
+#sign-in-section button {
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
+/*component-container: face, eye..*/
 .component-container {
   border: 2px solid #111;
   border-radius: 10px;
@@ -46,7 +60,7 @@ body {
   padding: 0 10px 10px 10px;
   position: relative;
 }
-/**/
+/*button remove & delete*/
 .btn-remove {
   position: absolute;
   right: 15px;
@@ -60,6 +74,20 @@ body {
 }
 
 .btn-remove:hover {
+  background-color: #c0392b;
+}
+
+.delete-emoji {
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.delete-emoji:hover {
   background-color: #c0392b;
 }
 
@@ -91,7 +119,7 @@ body {
 }
 
 .browser-item:hover {
-  background-color: aqua;
+  background-color: hotpink;
 }
 
 .canvas-container {
@@ -155,7 +183,7 @@ body {
   width: 100%;
 }
 
-input[name="description"] {
+.input-form-create-emojie {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -187,7 +215,7 @@ input[name="description"] {
   text-align: center;
 }
 
-/*filter*/
+/*Filter*/
 
 .filter-section {
   display: flex;
@@ -206,7 +234,7 @@ input[name="description"] {
   border-radius: 5px;
 }
 
-/**/
+/*Text of click-card-to-comment*/
 .click-to-comment-text {
   margin-left: 20px;
   font-size: 20px;
@@ -221,7 +249,7 @@ input[name="description"] {
   margin-bottom: 0;
 }
 
-/*sign in/ sign up*/
+/*Sign in & sign up*/
 .sign-in-and-sign-up-section {
   display: flex;
   justify-content: center;
@@ -273,4 +301,58 @@ input[name="description"] {
 
 .btn-sign:hover {
   background-color: #3cb371;
+}
+
+/*Upload section*/
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  max-width: 600px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.upload-form-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.upload-form-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.upload-form-selectlist {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.upload-form-btn-submit {
+  display: block;
+  background-color: #2196f3;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-form-btn-submit:hover {
+  background-color: #0d8bf2;
 }
