@@ -1,1 +1,18 @@
-{}
+{
+  "bc9affec-bbbf-4af1-b8b3-736d8280cf90": [
+    {
+      "comment": "comment-text1",
+      "rating": 1,
+      "username": "anonymous",
+      "time": "09:10:47 GMT+0000 (Greenwich Mean Time)"
+    }
+  ],
+  "62b5a352-0ddb-4886-a32b-e2f26776d7c0": [
+    {
+      "comment": "comment-test2",
+      "rating": 2,
+      "username": "anonymous",
+      "time": "09:11:02 GMT+0000 (Greenwich Mean Time)"
+    }
+  ]
+}

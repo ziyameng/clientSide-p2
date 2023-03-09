@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "face": "/resources/faces/face-pink-rosy.png",
+    "mouth": "/resources/mouth/mouth-grin-pink.png",
+    "eye": "/resources/eyes/eyes.png",
+    "hair": "/resources/hair/hair-curly-brown.png",
+    "desc": "test1",
+    "username": "zm",
+    "time": "Thu Mar 09 2023",
+    "id": "bc9affec-bbbf-4af1-b8b3-736d8280cf90"
+  },
+  {
+    "face": "/resources/faces/face-yellow.png",
+    "mouth": "/resources/mouth/mouth-grin-pink.png",
+    "eye": "/resources/eyes/eyes-smiley.png",
+    "hair": "/resources/hair/hair-short-teal.png",
+    "desc": "test2",
+    "username": "zm",
+    "time": "Thu Mar 09 2023",
+    "id": "62b5a352-0ddb-4886-a32b-e2f26776d7c0"
+  }
+]

@@ -44,6 +44,7 @@ function drawEmojieParts(parts) {
 
   function createSection(elements, name, key) {
     const div = document.createElement("div");
+    div.classList.add("component-container");
     const header = document.createElement("h2");
     header.innerText = name;
     div.appendChild(header);
@@ -54,6 +55,7 @@ function drawEmojieParts(parts) {
     div.appendChild(elementContainer);
 
     const remove = document.createElement("button");
+    remove.classList.add("btn-remove");
     remove.innerText = "Remove";
     remove.onclick = () => {
       emojieFace[key] = null;

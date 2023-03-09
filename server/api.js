@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const app = require("./app");
+const crypto = require("crypto");
 
 app.get("/api/emojie-parts", (_, res) => {
   const filename = path.join(__dirname, "../db/emojie-parts.json");
