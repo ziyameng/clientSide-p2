@@ -34,19 +34,30 @@
         <div class="emojie-parts" id="emojie-parts">Parts</div>
       </section>
 
-      <h2 class="filters-header">Filters</h2>
-      <form class="filters">
-        <label
-          >Search username: <input name="user-search" id="user-search" />
-        </label>
-        <label
-          >Create on or after:
-          <input name="date-search" id="date-search" type="date"
-        /></label>
-        <button>Filter</button>
-      </form>
+      <div class="browser-section">
+        <h2 class="h2-browser-section">Emoji Browser</h2>
+        <div class="filter-section">
+          <h2 class="filters-header">Filters</h2>
+          <form class="filters">
+            <label>
+              Search username:
+              <input name="user-search" id="user-search" />
+            </label>
+            <label>
+              Create on or after:
+              <input name="date-search" id="date-search" type="date" />
+            </label>
+            <button>Filter</button>
+          </form>
+        </div>
 
-      <section id="browser" class="browser-grid"></section>
+        <div class="click-to-comment-text">
+          <p class="click-card-to-comment">
+            ✏️ Click the Following Emoji Cards to Add Comments!
+          </p>
+        </div>
+        <section id="browser" class="browser-grid"></section>
+      </div>
     </main>
     <script type="module" src="resources/scripts/index.js"></script>
     <script src="resources/scripts/sign-in.js"></script>

@@ -17,35 +17,47 @@
       </div>
     </nav>
 
-    <main>
-      <h1>Sign In</h1>
-      <form id="sign-in">
-        <label>Username: <input name="username" value="" required /></label>
-        <label
-          >Password:
-          <input
-            type="password"
-            name="password"
-            value=""
-            required
-            minlength="6"
-        /></label>
-        <button type="submit">Sign In</button>
-      </form>
-      <h1>Sign Up</h1>
-      <form id="sign-up">
-        <label>Username: <input name="username" value="" required /></label>
-        <label
-          >Password:
-          <input
-            type="password"
-            name="password"
-            value=""
-            required
-            minlength="6"
-        /></label>
-        <button type="submit">Sign Up</button>
-      </form>
+    <main class="sign-in-and-sign-up-section">
+      <div class="sign-in-div">
+        <h1 class="h1-sign">Sign In</h1>
+        <form class="form-sign" id="sign-in">
+          <label class="label-sign"
+            >Username:
+            <input class="input-sign" name="username" value="" required
+          /></label>
+          <label class="label-sign"
+            >Password:
+            <input
+              class="input-sign"
+              type="password"
+              name="password"
+              value=""
+              required
+              minlength="6"
+          /></label>
+          <button class="btn-sign" type="submit">Sign In</button>
+        </form>
+      </div>
+      <div class="sign-up-div">
+        <h1 class="h1-sign">Sign Up</h1>
+        <form class="form-sign" id="sign-up">
+          <label class="label-sign"
+            >Username:
+            <input class="input-sign" name="username" value="" required
+          /></label>
+          <label class="label-sign"
+            >Password:
+            <input
+              class="input-sign"
+              type="password"
+              name="password"
+              value=""
+              required
+              minlength="6"
+          /></label>
+          <button class="btn-sign" type="submit">Sign Up</button>
+        </form>
+      </div>
     </main>
     <script src="resources/scripts/sign-in.js"></script>
   </body>
