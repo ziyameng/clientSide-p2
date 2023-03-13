@@ -36,14 +36,14 @@ securedRoutes.use((req, res, next) => {
 securedRoutes.delete("/api/emojies/:id", (req, res) => {
   const id = req.params.id;
 
-  const emojieFile = path.join(__dirname, "../db/emojies.json");
+  const emojiFile = path.join(__dirname, "../db/emojies.json");
   const commentsFile = path.join(__dirname, "../db/comments.json");
 
-  const emojies = JSON.parse(fs.readFileSync(emojieFile));
+  const emojies = JSON.parse(fs.readFileSync(emojiFile));
   const comments = JSON.parse(fs.readFileSync(commentsFile));
 
   fs.writeFileSync(
-    emojieFile,
+    emojiFile,
     JSON.stringify(
       emojies.filter((e) => e.id !== id),
       null,
@@ -57,8 +57,8 @@ securedRoutes.delete("/api/emojies/:id", (req, res) => {
   res.sendStatus(200);
 });
 
-securedRoutes.post("/api/emojie-part", async (req, res) => {
-  const filename = path.join(__dirname, "../db/emojie-parts.json");
+securedRoutes.post("/api/emoji-part", async (req, res) => {
+  const filename = path.join(__dirname, "../db/emoji-parts.json");
   const parts = JSON.parse(fs.readFileSync(filename));
 
   const { type, description, username, time, dataUrl } = req.body;

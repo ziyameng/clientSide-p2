@@ -77,7 +77,7 @@ form.onsubmit = async (event) => {
   const username = localStorage.getItem("username");
   const pass = localStorage.getItem("password");
   try {
-    await fetch("/api/emojie-part", {
+    await fetch("/api/emoji-part", {
       method: "POST",
       body: JSON.stringify({
         dataUrl,

@@ -1,22 +1,24 @@
 [
   {
     "face": "/resources/faces/face-pink-rosy.png",
-    "mouth": "/resources/mouth/mouth-grin-pink.png",
-    "eye": "/resources/eyes/eyes.png",
-    "hair": "/resources/hair/hair-curly-brown.png",
-    "desc": "test1",
-    "username": "zm",
-    "time": "Thu Mar 09 2023",
-    "id": "bc9affec-bbbf-4af1-b8b3-736d8280cf90"
-  },
-  {
-    "face": "/resources/faces/face-yellow.png",
-    "mouth": "/resources/mouth/mouth-grin-pink.png",
-    "eye": "/resources/eyes/eyes-smiley.png",
-    "hair": "/resources/hair/hair-short-teal.png",
-    "desc": "test2",
-    "username": "zm",
-    "time": "Thu Mar 09 2023",
-    "id": "62b5a352-0ddb-4886-a32b-e2f26776d7c0"
+    "mouth": null,
+    "eye": null,
+    "hair": null,
+    "desc": "2ee2e2",
+    "style": {
+      "face": {
+        "invert": "23",
+        "sepia": "3",
+        "saturate": "21",
+        "brightness": "105",
+        "contrast": ""
+      },
+      "eye": null,
+      "mouth": null,
+      "hair": null
+    },
+    "username": "anonymous",
+    "time": "Mon Mar 13 2023",
+    "id": "f469283b-8ecb-4dcf-9caf-e107ed27ed56"
   }
 ]

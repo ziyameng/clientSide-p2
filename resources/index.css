@@ -149,11 +149,11 @@ body {
 }
 
 /* Applied in the javascript */
-.emojie-part-container {
+.emoji-part-container {
   display: flex;
   gap: 20px;
 }
-.emojie-part {
+.emoji-part {
   display: flex;
   cursor: pointer;
   flex-direction: column;
@@ -162,12 +162,12 @@ body {
   padding: 5px;
   transition: background-color 80ms ease-in-out;
 }
-.emojie-part:hover {
+.emoji-part:hover {
   background-color: aliceblue;
 }
 
 /*form*/
-.form-create-emojie {
+.form-create-emoji {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -175,7 +175,7 @@ body {
   border-radius: 5px;
 }
 
-.label-form-create-emojie {
+.label-form-create-emoji {
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
@@ -183,7 +183,7 @@ body {
   width: 100%;
 }
 
-.input-form-create-emojie {
+.input-form-create-emoji {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -191,7 +191,7 @@ body {
   width: 95%;
 }
 
-.btn-form-create-emojie {
+.btn-form-create-emoji {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 18px;
@@ -203,7 +203,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.btn-form-create-emojie:hover {
+.btn-form-create-emoji:hover {
   background-color: #2e8b57;
 }
 
@@ -355,4 +355,30 @@ body {
 
 .upload-form-btn-submit:hover {
   background-color: #0d8bf2;
+}
+
+.emoji-filter-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-filter-inputs label {
+  display: inline-flex;
+  width: 100%;
+  gap: 5px;
+  justify-content: space-between;
+}
+
+.preview-emoji:hover {
+  cursor: pointer;
+  filter: brightness(105%);
+}
+#stack-order {
+  margin: 5px 0px;
+  font-weight: bolder;
+}
+#stack-order span {
+  text-transform: capitalize;
 }

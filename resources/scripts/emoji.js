@@ -1,9 +1,9 @@
-import { drawEmojie } from "./drawEmojie.js";
+import { drawEmoji } from "./drawEmoji.js";
 
-async function fetchEmojie() {
+async function fetchEmoji() {
   const params = new URLSearchParams(window.location.search);
 
-  const res = await fetch(`/api/emojie/${params.get("id")}`);
+  const res = await fetch(`/api/emoji/${params.get("id")}`);
   const content = await res.json();
 
   if (!content.id) {
@@ -11,7 +11,7 @@ async function fetchEmojie() {
   }
 
   const container = document.getElementById("emoji-section");
-  drawEmojie(container, content, true);
+  drawEmoji(container, content, true);
 
   const interactionSection = document.getElementById("interaction-section");
   if (content.username === localStorage.getItem("username")) {
@@ -65,7 +65,7 @@ async function fetchComments() {
   });
 }
 
-await fetchEmojie();
+await fetchEmoji();
 await fetchComments();
 
 const form = document.getElementById("post-comment");

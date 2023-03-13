@@ -1,25 +1,105 @@
-import { drawEmojie } from "./drawEmojie.js";
+import { drawEmoji } from "./drawEmoji.js";
 
-let emojieFace = {
+let emojiFace = {
   face: null,
   eye: null,
   mouth: null,
   hair: null,
 };
+let emojiStyles = {
+  face: null,
+  eye: null,
+  mouth: null,
+  hair: null,
+};
+let emojiCustomiseStack = [];
 
-function drawEmojieParts(parts) {
-  const container = document.getElementById("emojie-parts");
+// https://stackoverflow.com/a/50942954
+function drawCustomize() {
+  const filterInputs = document.getElementById("emojie-filters-inputs");
+
+  const stackOrder = document.getElementById("stack-order");
+
+  if (emojiCustomiseStack.length) {
+    stackOrder.innerHTML = `
+    Stacking emoji parts in the following order: <span>${emojiCustomiseStack.join(
+      " -> "
+    )}</span>
+    `;
+  } else {
+    stackOrder.innerHTML = "";
+  }
+
+  if (!emojiCustomiseStack.length) filterInputs.style.display = "none";
+  else filterInputs.style.display = "flex";
+
+  const invert = document.getElementById("invert");
+  const sepia = document.getElementById("sepia");
+  const saturate = document.getElementById("saturate");
+  const brightness = document.getElementById("brightness");
+  const contrast = document.getElementById("contrast");
+
+  const key = emojiCustomiseStack.at(-1);
+  if (!key) {
+    invert.value = undefined;
+    sepia.value = undefined;
+    saturate.value = undefined;
+    brightness.value = undefined;
+    contrast.value = undefined;
+
+    return;
+  }
+
+  invert.value = emojiStyles[key]?.invert ?? undefined;
+  sepia.value = emojiStyles[key]?.sepia ?? undefined;
+  saturate.value = emojiStyles[key]?.saturate ?? undefined;
+  brightness.value = emojiStyles[key]?.brightness ?? undefined;
+  contrast.value = emojiStyles[key]?.contrast ?? undefined;
+
+  invert.oninput = (e) => {
+    const value = e.target.value;
+    emojiStyles[key] = { ...emojiStyles[key], invert: value };
+    drawOnCanvas();
+  };
+  sepia.oninput = (e) => {
+    const value = e.target.value;
+    emojiStyles[key] = { ...emojiStyles[key], sepia: value };
+    drawOnCanvas();
+  };
+  saturate.oninput = (e) => {
+    const value = e.target.value;
+    emojiStyles[key] = { ...emojiStyles[key], saturate: value };
+    drawOnCanvas();
+  };
+  brightness.oninput = (e) => {
+    const value = e.target.value;
+    emojiStyles[key] = { ...emojiStyles[key], brightness: value };
+    drawOnCanvas();
+  };
+  contrast.oninput = (e) => {
+    const value = e.target.value;
+    emojiStyles[key] = { ...emojiStyles[key], contrast: value };
+    drawOnCanvas();
+  };
+}
+
+function drawEmojiParts(parts) {
+  const container = document.getElementById("emoji-parts");
   container.innerHTML = "";
 
   const { eye, mouth, face, hair } = parts;
 
   function createPart(item, key) {
     const div = document.createElement("div");
-    div.className = "emojie-part";
+    div.className = "emoji-part";
 
     div.onclick = () => {
-      emojieFace[key] = item.src;
+      emojiFace[key] = item.src;
+
+      if (!emojiCustomiseStack.includes(key)) emojiCustomiseStack.push(key);
+
       drawOnCanvas();
+      drawCustomize();
     };
 
     const img = document.createElement("img");
@@ -50,7 +130,7 @@ function drawEmojieParts(parts) {
     div.appendChild(header);
 
     const elementContainer = document.createElement("div");
-    elementContainer.className = "emojie-part-container";
+    elementContainer.className = "emoji-part-container";
     elements.forEach((el) => elementContainer.appendChild(el));
     div.appendChild(elementContainer);
 
@@ -58,7 +138,9 @@ function drawEmojieParts(parts) {
     remove.classList.add("btn-remove");
     remove.innerText = "Remove";
     remove.onclick = () => {
-      emojieFace[key] = null;
+      emojiFace[key] = null;
+      emojiCustomiseStack = emojiCustomiseStack.filter((e) => e !== key);
+      drawCustomize();
       drawOnCanvas();
     };
 
@@ -77,22 +159,40 @@ function drawOnCanvas() {
   const canvas = document.getElementById("canvas");
   canvas.innerHTML = "";
 
-  Object.values(emojieFace).forEach((src) => {
+  Object.entries(emojiFace).forEach(([key, src]) => {
     if (!src) return;
 
     const img = document.createElement("img");
     img.src = src;
+    img.className = "preview-emoji";
+
+    const styles = emojiStyles[key];
+    if (styles) {
+      const styleString = Object.entries(styles)
+        .map(([filterName, filterValue]) => {
+          if (typeof filterValue === "string" && filterValue.length === 0)
+            return null;
+
+          return `${filterName}(${filterValue}%)`;
+        })
+        .filter((value) => value !== null)
+        .join(" ");
+
+      img.style.filter = styleString;
+    }
+
     canvas.appendChild(img);
   });
 }
 
-async function loadEmojiePart() {
-  const res = await fetch("/api/emojie-parts");
+async function loadEmojiPart() {
+  const res = await fetch("/api/emoji-parts");
   const parts = await res.json();
 
-  drawEmojieParts(parts);
+  drawEmojiParts(parts);
+  drawCustomize();
 }
-await loadEmojiePart();
+await loadEmojiPart();
 
 async function fetchAndDrawCreatedEmojies() {
   const params = new URLSearchParams(window.location.search);
@@ -121,14 +221,14 @@ async function fetchAndDrawCreatedEmojies() {
   container.innerHTML = "";
 
   emojies.forEach((emoji) => {
-    drawEmojie(container, emoji);
+    drawEmoji(container, emoji);
   });
 }
 
 await fetchAndDrawCreatedEmojies();
 
 // Handle form submit.
-const form = document.getElementById("create-emojie");
+const form = document.getElementById("create-emoji");
 
 form.onsubmit = async (event) => {
   event.preventDefault();
@@ -140,7 +240,8 @@ form.onsubmit = async (event) => {
     const res = await fetch("/api/create-emoji", {
       method: "POST",
       body: JSON.stringify({
-        ...emojieFace,
+        ...emojiFace,
+        style: emojiStyles,
         desc: description,
         username: localStorage.getItem("username") ?? "anonymous",
       }),
@@ -155,7 +256,10 @@ form.onsubmit = async (event) => {
       await fetchAndDrawCreatedEmojies();
     }
 
-    emojieFace = { face: null, eye: null, mouth: null, hair: null };
+    emojiFace = { face: null, eye: null, mouth: null, hair: null };
+    emojiStyles = { face: null, eye: null, mouth: null, hair: null };
+    emojiCustomiseStack = [];
+    drawCustomize();
     drawOnCanvas();
   } catch (e) {
     alert(`Failed to create emoji: ${e.message}`);

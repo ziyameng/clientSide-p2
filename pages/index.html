@@ -22,17 +22,32 @@
         <div class="canvas-container">
           <div id="canvas" class="canvas"></div>
           <div>
+            As you add emojie parts you can customize the look and feel of it.
+          </div>
+          <div id="stack-order"">
+
+          </div>
+          <div class="emoji-filter-inputs" id="emojie-filters-inputs">
+            <label>Invert (%): <input id="invert" type="number" /></label>
+            <label>Sepia (%): <input id="sepia" type="number" /></label>
+            <label>Saturate: (%): <input id="saturate" type="number" /></label>
+            <label
+              >brightness: (%): <input id="brightness" type="number"
+            /></label>
+            <label>contrast: (%): <input id="contrast" type="number" /></label>
+          </div>
+          <div>
             <!-- submit handled in JavaScript -->
-            <form id="create-emojie" class="form-create-emojie">
-              <label class="label-form-create-emojie"
+            <form id="create-emoji" class="form-create-emoji">
+              <label class="label-form-create-emoji"
                 >Description
-                <input class="input-form-create-emojie" name="description"
+                <input class="input-form-create-emoji" name="description"
               /></label>
-              <button class="btn-form-create-emojie">Create emojie</button>
+              <button class="btn-form-create-emoji">Create emoji</button>
             </form>
           </div>
         </div>
-        <div class="emojie-parts" id="emojie-parts">Parts</div>
+        <div class="emoji-parts" id="emoji-parts">Parts</div>
       </section>
 
       <div class="browser-section">

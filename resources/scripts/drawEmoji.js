@@ -1,11 +1,11 @@
-export function drawEmojie(container, emoji, noClick) {
+export function drawEmoji(container, emoji, noClick) {
   const div = document.createElement("div");
   div.className = "browser-item";
 
-  // Navigate to indiviual emojie component
+  // Navigate to indiviual emoji component
   if (!noClick) {
     div.onclick = () => {
-      window.location.href = `/emojie?id=${emoji.id}`;
+      window.location.href = `/emoji?id=${emoji.id}`;
     };
   }
 
@@ -14,8 +14,13 @@ export function drawEmojie(container, emoji, noClick) {
   canvas.style.height = `200px`;
   canvas.style.width = `200px`;
 
-  const imgs = [emoji.face, emoji.eye, emoji.mouth, emoji.hair];
-  imgs.forEach((src) => {
+  const imgs = [
+    ["face", emoji.face],
+    ["eye", emoji.eye],
+    ["mouth", emoji.mouth],
+    ["hair", emoji.hair],
+  ];
+  imgs.forEach(([key, src]) => {
     if (!src) return;
 
     const img = document.createElement("img");
@@ -23,6 +28,21 @@ export function drawEmojie(container, emoji, noClick) {
     img.src = src;
     img.width = 200;
     img.height = 200;
+
+    const styles = emoji.style[key];
+    if (styles) {
+      const styleString = Object.entries(styles)
+        .map(([filterName, filterValue]) => {
+          if (typeof filterValue === "string" && filterValue.length === 0)
+            return null;
+
+          return `${filterName}(${filterValue}%)`;
+        })
+        .filter((value) => value !== null)
+        .join(" ");
+
+      img.style.filter = styleString;
+    }
 
     canvas.appendChild(img);
   });
@@ -32,7 +52,7 @@ export function drawEmojie(container, emoji, noClick) {
   const name = document.createElement("p");
   name.innerText = "created by " + emoji.username + " on " + emoji.time;
   div.appendChild(name);
-  console.log(emoji);
+
   if (emoji.desc) {
     const desc = document.createElement("p");
     desc.innerText = emoji.desc;
